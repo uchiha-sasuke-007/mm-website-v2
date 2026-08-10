@@ -55,6 +55,10 @@ export default function Home() {
               <span><T pt="Consultar disponibilidade" en="Check availability" /></span> ↗
             </Link>
           </div>
+          <div className="heroServiceRail">
+            <Link href="/telefones"><small><T pt="VENDA DE TELEFONES" en="PHONE SALES" /></small><b><T pt="Encontre o telefone certo para si." en="Find the right phone for you." /></b><span><T pt="Ver telefones" en="View phones" /> →</span></Link>
+            <Link href="/reparacao"><small><T pt="REPARAÇÃO" en="REPAIR" /></small><b><T pt="Conte-nos o que aconteceu." en="Tell us what happened." /></b><span><T pt="Pedir assistência" en="Request assistance" /> →</span></Link>
+          </div>
         </div>
       </div>
     </section>
