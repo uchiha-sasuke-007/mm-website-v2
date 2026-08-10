@@ -7,12 +7,12 @@ import { whatsappUrl } from "../lib/phones";
 function Header(){
   const [open,setOpen]=useState(false); const {lang,setLang}=useLanguage();
   const nav=[{href:"/",pt:"Início",en:"Home"},{href:"/telefones",pt:"Telefones",en:"Phones"},{href:"/reparacao",pt:"Reparação",en:"Repair"},{href:"/sobre",pt:"Sobre",en:"About"},{href:"/contacto",pt:"Contacto",en:"Contact"}];
-  return <header className="siteHeader"><div className="wide headerInner">
-    <Link className="brand" href="/" aria-label="MM início"><span className="logoFrame"><img src="/logo-mm.png" alt="" /></span><small><T pt="Smartphones e Reparação" en="Smartphones and Repair" /></small></Link>
+  return <header className="siteHeader"><div className="shopTop"><div className="wide"><span><T pt="MM — Smartphones e Reparação em Angola" en="MM — Smartphones and Repair in Angola" /></span><div><a href="/contacto">⌖ <T pt="Bela Vista" en="Bela Vista" /></a><a href="tel:+244923933692">+244 923 933 692</a></div></div></div><div className="wide headerInner">
+    <Link className="brand" href="/" aria-label="MM início"><span className="logoFrame"><img src="/logo-mm.png" alt="" /></span><span className="brandName"><b>MM</b><small><T pt="Smartphones e Reparação" en="Smartphones and Repair" /></small></span></Link>
     <button className="menuButton" onClick={()=>setOpen(!open)} aria-expanded={open} aria-label="Abrir menu"><i/><i/><i/></button>
     <div className={`navPanel ${open?"open":""}`}>
       <nav>{nav.map(n=><Link key={n.href} href={n.href} onClick={()=>setOpen(false)}>{lang==="pt"?n.pt:n.en}</Link>)}</nav>
-      <div className="langSwitch" aria-label="Idioma"><button className={lang==="pt"?"active":""} onClick={()=>setLang("pt")}>PT</button><span>|</span><button className={lang==="en"?"active":""} onClick={()=>setLang("en")}>EN</button></div>
+      <button className="searchHint" aria-label={lang==="pt"?"Pesquisar telefones":"Search phones"}>⌕</button><div className="langSwitch" aria-label="Idioma"><button className={lang==="pt"?"active":""} onClick={()=>setLang("pt")}>PT</button><span>|</span><button className={lang==="en"?"active":""} onClick={()=>setLang("en")}>EN</button></div>
       <a className="headerCta" href={whatsappUrl(lang==="pt"?"Olá MM, gostaria de falar convosco.":"Hello MM, I would like to speak with you.")}><T pt="Falar no WhatsApp" en="Chat on WhatsApp" /> <span>↗</span></a>
     </div>
   </div></header>
