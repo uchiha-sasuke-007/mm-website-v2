@@ -1,2 +1,69 @@
-"use client";import Link from "next/link";import type {Phone} from "../../../lib/phones";import {whatsappUrl} from "../../../lib/phones";import {T,useLanguage} from "../../../components/LanguageProvider";
-export default function ProductDetail({phone}:{phone:Phone}){const{lang}=useLanguage();const message=lang==="pt"?`Olá MM, vi o ${phone.model} no website e gostaria de confirmar o preço e a disponibilidade.`:`Hello MM, I saw the ${phone.model} on the website and would like to confirm price and availability.`;return <><section className="productPage"><div className="wide"><div className="productBreadcrumb"><Link href="/">MM</Link><span>/</span><Link href="/telefones"><T pt="Telefones" en="Phones" /></Link><span>/</span><b>{phone.model}</b></div><div className="productLayout"><div className="productGallery"><div className="galleryMain"><span>{phone.available?(lang==="pt"?"Disponível":"Available"):(lang==="pt"?"Sob consulta":"Ask us")}</span><img src={phone.image} alt={phone.model}/></div><div className="galleryThumbs"><button className="active"><img src={phone.image} alt=""/></button><button><img src={phone.image} alt=""/></button><button><img src={phone.image} alt=""/></button></div></div><div className="buyPanel"><small className="productBrand">{phone.brand}</small><h1>{phone.model}</h1><div className="conditionPill">✓ {phone.condition==="Novo"?(lang==="pt"?"Novo":"New"):(lang==="pt"?"Seminovo":"Pre-owned")}</div><p>{lang==="pt"?phone.description:phone.descriptionEn}</p><div className="buyChoices"><div><small><T pt="Armazenamento" en="Storage" /></small><b>{phone.storage}</b></div><div><small><T pt="Cor" en="Colour" /></small><b>{lang==="pt"?phone.color:phone.colorEn}</b></div></div><div className="buyPrice"><small><T pt="PREÇO" en="PRICE" /></small><strong>{lang==="pt"?phone.price:"Ask for price"}</strong><span>● {phone.available?(lang==="pt"?"Disponível para consulta":"Available to enquire"):(lang==="pt"?"Confirme a disponibilidade":"Confirm availability")}</span></div><a className="btn buyWhatsapp" href={whatsappUrl(message)}><span>✆</span><T pt="Tenho interesse" en="I'm interested" /><b>↗</b></a><small className="buyNote"><T pt="Será encaminhado para o WhatsApp da MM." en="You will be redirected to MM's WhatsApp." /></small></div></div></div></section><section className="productDetails"><div className="wide"><div className="detailsTabs"><b><T pt="Sobre este telefone" en="About this phone" /></b><span><T pt="Características" en="Features" /></span><span><T pt="Informações importantes" en="Important information" /></span></div><div className="detailContent"><article><h2><T pt="Descrição" en="Description" /></h2><p>{lang==="pt"?phone.description:phone.descriptionEn}</p></article><article><h2><T pt="Características principais" en="Key features" /></h2>{(lang==="pt"?phone.features:phone.featuresEn).map(f=><span key={f}>✓ {f}</span>)}</article><article><h2><T pt="Condição e disponibilidade" en="Condition and availability" /></h2><p><T pt="As informações de preço e disponibilidade devem ser confirmadas directamente com a MM antes da compra." en="Price and availability information must be confirmed directly with MM before purchase." /></p><a href={whatsappUrl(message)}><T pt="Confirmar no WhatsApp" en="Confirm on WhatsApp" /> →</a></article></div></div></section></>}
+"use client";
+
+import Link from "next/link";
+import { T, useLanguage } from "../../../components/LanguageProvider";
+import type { Phone } from "../../../lib/phones";
+import { whatsappUrl } from "../../../lib/phones";
+
+export default function ProductDetail({ phone }: { phone: Phone }) {
+  const { lang } = useLanguage();
+  const message = lang === "pt"
+    ? `Olá MM, vi o ${phone.model} no website e gostaria de confirmar o preço e a disponibilidade.`
+    : `Hello MM, I saw the ${phone.model} on the website and would like to confirm price and availability.`;
+
+  return <>
+    <section className="productPage">
+      <div className="wide">
+        <div className="productBreadcrumb">
+          <Link href="/">MM</Link><span>/</span><Link href="/telefones"><T pt="Telefones" en="Phones" /></Link><span>/</span><b>{phone.model}</b>
+        </div>
+        <div className="productLayout">
+          <div className="productGallery">
+            <div className="galleryMain">
+              <span>{phone.available ? (lang === "pt" ? "Disponível" : "Available") : (lang === "pt" ? "Sob consulta" : "Ask us")}</span>
+              <img src={phone.image} alt={phone.model} />
+            </div>
+            <div className="galleryThumbs" aria-hidden="true">
+              {[0, 1, 2].map((item) => <div className={item === 0 ? "active" : ""} key={item}><img src={phone.image} alt="" /></div>)}
+            </div>
+          </div>
+          <div className="buyPanel">
+            <small className="productBrand">{phone.brand}</small>
+            <h1>{phone.model}</h1>
+            <div className="conditionPill">✓ {phone.condition === "Novo" ? (lang === "pt" ? "Novo" : "New") : (lang === "pt" ? "Seminovo" : "Pre-owned")}</div>
+            <p>{lang === "pt" ? phone.description : phone.descriptionEn}</p>
+            <div className="buyChoices">
+              <div><small><T pt="Armazenamento" en="Storage" /></small><b>{phone.storage}</b></div>
+              <div><small><T pt="Cor" en="Colour" /></small><b>{lang === "pt" ? phone.color : phone.colorEn}</b></div>
+            </div>
+            <div className="buyPrice">
+              <small><T pt="PREÇO" en="PRICE" /></small>
+              <strong>{lang === "pt" ? phone.price : "Ask for price"}</strong>
+              <span>● {phone.available ? (lang === "pt" ? "Disponível para consulta" : "Available to enquire") : (lang === "pt" ? "Confirme a disponibilidade" : "Confirm availability")}</span>
+            </div>
+            <a className="btn buyWhatsapp" href={whatsappUrl(message)}><span>✆</span><T pt="Tenho interesse" en="I'm interested" /><b>↗</b></a>
+            <small className="buyNote"><T pt="Será encaminhado para o WhatsApp da MM." en="You will be redirected to MM's WhatsApp." /></small>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section className="productDetails">
+      <div className="wide">
+        <div className="detailsTabs">
+          <b><T pt="Sobre este telefone" en="About this phone" /></b>
+          <span><T pt="Características" en="Features" /></span>
+          <span><T pt="Informações importantes" en="Important information" /></span>
+        </div>
+        <div className="detailContent">
+          <article><h2><T pt="Descrição" en="Description" /></h2><p>{lang === "pt" ? phone.description : phone.descriptionEn}</p></article>
+          <article><h2><T pt="Características principais" en="Key features" /></h2>{(lang === "pt" ? phone.features : phone.featuresEn).map((feature) => <span key={feature}>✓ {feature}</span>)}</article>
+          <article>
+            <h2><T pt="Condição e disponibilidade" en="Condition and availability" /></h2>
+            <p><T pt="As informações de preço e disponibilidade devem ser confirmadas directamente com a MM antes da compra." en="Price and availability information must be confirmed directly with MM before purchase." /></p>
+            <a href={whatsappUrl(message)}><T pt="Confirmar no WhatsApp" en="Confirm on WhatsApp" /> →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </>;
+}

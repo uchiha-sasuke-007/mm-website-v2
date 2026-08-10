@@ -8,12 +8,12 @@ const mono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://mm-mobile.pages.dev"),
-  title: "MM | Smartphones e Reparação em Angola",
-  description: "Smartphones seleccionados e serviços de reparação em Bela Vista, Angola.",
+  title: "MM | Venda e Reparação de Telefones em Angola",
+  description: "Venda e reparação de telefones com atendimento próximo em Bela Vista, Angola.",
   icons: { icon: "/logo-mm.png", shortcut: "/logo-mm.png", apple: "/logo-mm.png" },
   openGraph: {
-    title: "MM | Smartphones & Reparação",
-    description: "Seu próximo smartphone ou uma nova vida para o atual.",
+    title: "MM | Venda e Reparação de Telefones",
+    description: "O telefone que procura. O cuidado que ele merece.",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "MM Smartphones & Reparação" }],
     locale: "pt_AO",
     type: "website",
