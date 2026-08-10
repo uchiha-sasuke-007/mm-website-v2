@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <main>
       <nav className="nav shell" aria-label="Navegação principal">
-        <a className="brand" href="#top" aria-label="MM início"><span>MM</span><small>mobile & repair</small></a>
+        <a className="brand" href="#top" aria-label="MM início"><span className="logoFrame"><img src="/logo-mm.png" alt="" /></span><small>mobile & repair</small></a>
         <div className="navLinks">
           <a href="#smartphones">Smartphones</a><a href="#reparacao">Reparação</a><a href="#loja">A loja</a>
         </div>
@@ -52,7 +52,7 @@ export default function Home() {
           <div className="orbit orbitOne" /><div className="orbit orbitTwo" />
           <div className="phone mainPhone">
             <div className="phoneTop" />
-            <div className="phoneScreen"><span className="screenTime">09:41</span><div className="screenOrb" /><span className="screenBrand">MM</span></div>
+            <div className="phoneScreen"><span className="screenTime">09:41</span><div className="screenOrb" /><span className="screenBrand"><img src="/logo-mm.png" alt="MM" /></span></div>
           </div>
           <div className="floatCard stock"><span className="miniIcon">◆</span><div><small>DISPONÍVEL</small><b>Modelos selecionados</b></div></div>
           <div className="floatCard repair"><span className="miniIcon">✦</span><div><small>ASSISTÊNCIA</small><b>Diagnóstico especializado</b></div></div>
@@ -120,7 +120,7 @@ export default function Home() {
         <div className="ctaSide"><p>Consulte disponibilidade, tire dúvidas ou peça um diagnóstico direto pelo WhatsApp.</p><a className="button white" href={whatsapp}>Iniciar conversa <span>↗</span></a></div>
       </section>
 
-      <footer className="shell"><a className="brand" href="#top"><span>MM</span><small>mobile & repair</small></a><p>Smartphones e assistência técnica especializada.</p><div><a href="#smartphones">Smartphones</a><a href="#reparacao">Reparação</a><a href={whatsapp}>WhatsApp</a></div><small>© 2026 MM Mobile & Repair</small></footer>
+      <footer className="shell"><a className="brand" href="#top"><span className="logoFrame"><img src="/logo-mm.png" alt="" /></span><small>mobile & repair</small></a><p>Smartphones e assistência técnica especializada.</p><div><a href="#smartphones">Smartphones</a><a href="#reparacao">Reparação</a><a href={whatsapp}>WhatsApp</a></div><small>© 2026 MM Mobile & Repair</small></footer>
     </main>
   );
 }

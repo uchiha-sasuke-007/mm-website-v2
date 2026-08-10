@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://mm-mobile.pages.dev"),
   title: "MM Mobile & Repair | Smartphones e Assistência Técnica",
   description: "Smartphones selecionados e reparação especializada com atendimento direto e transparente.",
-  icons: { icon: "/favicon.svg" },
+  icons: { icon: "/logo-mm.png", shortcut: "/logo-mm.png", apple: "/logo-mm.png" },
   openGraph: {
     title: "MM | Smartphones & Reparação",
     description: "Seu próximo smartphone ou uma nova vida para o atual.",
