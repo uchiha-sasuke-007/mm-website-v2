@@ -22,9 +22,9 @@ const trust: [LucideIcon, string, string, string, string][] = [
 
 // ASSETS VISUAIS DE DEMONSTRAÇÃO — substituir por fotografias do stock real antes da publicação oficial.
 const heroVisuals = [
-  "https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTExL3JtNTUxLTI5LWlwaG9uZV8xLnBuZw.png",
-  "https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTExL3JtNTUxLTI0LWlwaG9uZS0yNC1jLW1vY2t1cF8yLnBuZw.png",
-  "https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAyL3Y1ODUtYWV3LTA5LWRldmljZW1vY2t1cC1qb2IxNzM4LnBuZw.png",
+  { src: "/phones/iphone-17-pro-max.png", name: "iPhone 17 Pro Max" },
+  { src: "/phones/galaxy-s26-ultra.png", name: "Galaxy S26 Ultra" },
+  { src: "/phones/tecno-camon-50-ultra.png", name: "TECNO CAMON 50 Ultra 5G" },
 ];
 
 export default function Home() {
@@ -47,7 +47,7 @@ export default function Home() {
 
       <div className="referencePhones" aria-label={lang === "pt" ? "Telefones em destaque" : "Featured phones"}>
         <div className="referenceBeam"/>
-        {heroVisuals.map((image, index) => <Link href="/telefones" className={`referencePhone p${index + 1}`} key={image}><img src={image} alt={lang === "pt" ? "Apresentação visual de telefone premium" : "Premium phone visual presentation"}/></Link>)}
+        {heroVisuals.map((phone, index) => <Link href="/telefones" className={`referencePhone p${index + 1}`} key={phone.src}><img src={phone.src} alt={phone.name}/></Link>)}
       </div>
 
       <aside className="referenceSideCards">
