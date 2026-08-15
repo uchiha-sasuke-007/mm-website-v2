@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { BatteryCharging, Camera, CircleEllipsis, Gauge, MapPin, MessageCircle, MessagesSquare, Power, Search, ShieldCheck, ShoppingBag, Smartphone, Wrench, Zap } from "lucide-react";
+import { BatteryCharging, Camera, CircleEllipsis, Gauge, MessageCircle, MessagesSquare, Power, Search, ShieldCheck, Smartphone, Zap } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { T, useLanguage } from "../components/LanguageProvider";
 import { phones } from "../lib/phones";
+import { HeroPhoneCarousel } from "../components/HeroPhoneCarousel";
 
 const issues: [LucideIcon, string, string][] = [
   [Smartphone, "Ecrã partido", "Broken screen"], [BatteryCharging, "Bateria descarrega rápido", "Battery drains quickly"],
@@ -34,41 +35,28 @@ export default function Home() {
   return <div className="referenceHome">
     <section className="referenceHero"><div className="wide referenceHeroGrid">
       <div className="referenceHeroCopy">
-        <span className="referenceBadge"><T pt="TECNOLOGIA MAIS PERTO DE SI" en="TECHNOLOGY CLOSER TO YOU" /></span>
-        <h1><T pt={<>O telefone que procura.<br/><em>O cuidado que ele merece.</em></>} en={<>The phone you want.<br/><em>The care it deserves.</em></>} /></h1>
-        <p><T pt={<>Venda, reparação e proteção de telefones<br/><strong>num só lugar.</strong></>} en={<>Phone sales, repair and protection<br/><strong>in one place.</strong></>} /></p>
-        <div className="referenceProof">
-          <span><i><MessageCircle size={16}/></i><b><T pt="Atendimento próximo" en="Personal service" /></b><small><T pt="Sempre ao seu lado." en="Always by your side." /></small></span>
-          <span><i><Gauge size={16}/></i><b><T pt="Avaliação cuidadosa" en="Careful assessment" /></b><small><T pt="Primeiro entendemos." en="We understand first." /></small></span>
-          <span><i><MapPin size={16}/></i><b>Bela Vista, Angola</b><small><T pt="Em frente à Pumangol." en="Opposite Pumangol." /></small></span>
-        </div>
-        <div className="referenceActions"><Link href="/telefones"><T pt="Quero comprar um telefone" en="I want to buy a phone" /> →</Link><Link href="/reparacao"><T pt="Preciso reparar o meu telefone" en="I need to repair my phone" /> →</Link></div>
+        <span className="referenceBadge"><T pt="TECNOLOGIA, CONFIANÇA E QUALIDADE" en="TECHNOLOGY, TRUST AND QUALITY" /></span>
+        <h1><T pt={<><span>Encontre o telefone<br/>certo para si.</span><em>E conte connosco para cuidar dele.</em></>} en={<><span>Find the right phone<br/>for you.</span><em>And count on us to take care of it.</em></>} /></h1>
+        <p className="heroSubtitle"><T pt="Venda, reparação e proteção de telefones num só lugar." en="Phone sales, repair and protection in one place." /></p>
+        <p className="heroDescription"><T pt="Telefones selecionados, assistência especializada e proteção para o seu aparelho — estamos localizados na Bela Vista, frente às bombas da Pumangol." en="Selected phones, specialist assistance and protection for your device — we are located in Bela Vista, opposite the Pumangol fuel station." /></p>
+        <div className="referenceActions"><Link href="/telefones"><T pt="Ver telefones" en="View phones" /> →</Link><Link href="/reparacao"><T pt="Reparar o meu telefone" en="Repair my phone" /> →</Link></div>
       </div>
 
-      <div className="referencePhones" aria-label={lang === "pt" ? "Telefones em destaque" : "Featured phones"}>
-        <div className="referenceBeam"/>
-        {heroVisuals.map((phone, index) => <Link href="/telefones" className={`referencePhone p${index + 1}`} key={phone.src}><img src={phone.src} alt={phone.name}/></Link>)}
-      </div>
+      <HeroPhoneCarousel phones={heroVisuals} lang={lang} />
 
       <aside className="referenceSideCards">
-        <Link href="/telefones"><div><small><T pt="Venda de telefones" en="Phone sales" /></small><p><T pt="Modelos para diferentes necessidades e orçamentos." en="Models for different needs and budgets." /></p><span><T pt="Ver telefones" en="View phones" /> →</span></div><img src={phones[0].image} alt=""/></Link>
-        <Link href="/reparacao"><div><small><T pt="Reparação de telefones" en="Phone repair" /></small><p><T pt="Conte-nos o que aconteceu ao seu aparelho." en="Tell us what happened to your device." /></p><span><T pt="Saber mais" en="Learn more" /> →</span></div><img src="https://images.unsplash.com/photo-1621768216002-5ac171876625?auto=format&fit=crop&w=700&q=85" alt=""/></Link>
-        <Link href="/peliculas"><div><small><T pt="Películas de proteção" en="Screen protection" /></small><p><T pt="Proteção profissional para ajudar a preservar o seu ecrã." en="Professional protection to help preserve your screen." /></p><span><T pt="Ver opções" en="View options" /> →</span></div><img src="https://d2yoo3qu6vrk5d.cloudfront.net/pulzo-lite/images-resized/PP3729246-h-o.webp" alt=""/></Link>
+        <Link href="/telefones"><div><small><T pt="Venda de telefones" en="Phone sales" /></small><p><T pt="Encontre modelos selecionados para diferentes necessidades e orçamentos." en="Find selected models for different needs and budgets." /></p><span><T pt="Ver telefones" en="View phones" /> →</span></div><img src={phones[0].image} alt=""/></Link>
+        <Link href="/reparacao"><div><small><T pt="Reparação de telefones" en="Phone repair" /></small><p><T pt="Ecrã partido, bateria, carregamento ou outro problema? Fale connosco." en="Broken screen, battery, charging or another problem? Talk to us." /></p><span><T pt="Ver reparação" en="View repair services" /> →</span></div><img src="https://images.unsplash.com/photo-1621768216002-5ac171876625?auto=format&fit=crop&w=700&q=85" alt=""/></Link>
+        <Link href="/peliculas" className="laserFilmCard"><div><b className="laserFilmBadge"><T pt="PROTEÇÃO REFORÇADA" en="ENHANCED PROTECTION" /></b><small><T pt="Películas laser" en="Laser screen protectors" /></small><p><T pt="Mais resistência e proteção para o seu ecrã no dia a dia." en="Greater resistance and protection for your screen every day." /></p><span><T pt="Ver películas laser" en="View laser screen protectors" /> →</span></div><img src="https://d2yoo3qu6vrk5d.cloudfront.net/pulzo-lite/images-resized/PP3729246-h-o.webp" alt=""/></Link>
       </aside>
     </div></section>
 
     <div className="wide referenceDashboard">
-      <section className="referenceChoices">
-        <Link href="/telefones"><i><ShoppingBag size={21}/></i><div><small><T pt="QUERO UM TELEFONE" en="I WANT A PHONE" /></small><h2><T pt="O seu próximo telefone pode estar mais perto do que imagina." en="Your next phone may be closer than you think." /></h2><p><T pt="Descubra modelos para diferentes estilos, necessidades e orçamentos." en="Discover models for different styles, needs and budgets." /></p><span><T pt="Ver telefones" en="View phones" /> →</span></div><img src={phones[2].image} alt=""/></Link>
-        <Link href="/reparacao"><i><Wrench size={21}/></i><div><small><T pt="PRECISO DE REPARAÇÃO" en="I NEED A REPAIR" /></small><h2><T pt="Quebrou? Fale connosco antes de desistir do seu telefone." en="Broken? Talk to us before giving up on your phone." /></h2><p><T pt="Conte-nos o que aconteceu. A MM ajuda a identificar o próximo passo." en="Tell us what happened. MM helps identify the next step." /></p><span><T pt="Pedir assistência" en="Request assistance" /> →</span></div></Link>
-        <Link href="/peliculas"><i><ShieldCheck size={21}/></i><div><small><T pt="QUERO PROTEGER" en="I WANT PROTECTION" /></small><h2><T pt="Uma película hoje pode ajudar a evitar problemas amanhã." en="A screen protector today can help prevent problems tomorrow." /></h2><p><T pt="Proteção para ajudar a preservar o ecrã no dia a dia." en="Protection to help preserve your screen every day." /></p><span><T pt="Ver películas" en="View options" /> →</span></div></Link>
-      </section>
+      <section className="referenceBrands"><header><b><T pt="PROCURE POR MARCA" en="SHOP BY BRAND" /></b></header><div>{[["Apple","/brands/apple-official.png","Ver modelos","View models"],["Samsung","/brands/samsung-official.png","Ver modelos","View models"],["Tecno","/brands/tecno-official.png","Ver modelos","View models"],["Infinix","/brands/infinix-official.png","Ver modelos","View models"],["Outros","•••","Explorar","Explore"]].map(([brand,logo,pt,en]) => <Link href={`/telefones?marca=${brand}`} className={`brandCard brandCard${brand}`} key={brand}>{brand === "Outros" ? <strong>{logo}</strong> : <span className="brandLogoArea"><img className="brandLogo" src={logo} alt={`${brand} logo`}/></span>}<b>{brand === "Outros" ? (lang === "pt" ? "Mais marcas" : "More brands") : brand}</b><small>{lang === "pt" ? pt : en} →</small></Link>)}</div></section>
 
-      <section className="referenceBrands"><header><b><T pt="PROCURE POR MARCA" en="SHOP BY BRAND" /></b><Link href="/telefones"><T pt="Ver catálogo completo" en="View full catalogue" /> →</Link></header><div>{[["Apple","A","Ver iPhones","View iPhones"],["Samsung","S","Ver Galaxy","View Galaxy"],["Tecno","T","Ver modelos","View models"],["Infinix","I","Ver modelos","View models"],["Outros","•••","Explorar","Explore"]].map(([brand,icon,pt,en]) => <Link href={`/telefones?marca=${brand}`} key={brand}><strong>{icon}</strong><b>{brand === "Outros" ? (lang === "pt" ? "Mais marcas" : "More brands") : brand}</b><small>{lang === "pt" ? pt : en} →</small></Link>)}</div></section>
+      <section className="referenceProducts"><header><div><small><T pt="TELEFONES EM DESTAQUE" en="FEATURED PHONES" /></small><h2><T pt="Modelos disponíveis na MM." en="Models available at MM." /></h2></div><Link href="/telefones"><T pt="Ver todos os telefones" en="View all phones" /> →</Link></header><div>{featured.map((phone) => <Link href={`/telefones/${phone.slug}`} className="referenceProductCard" aria-label={lang === "pt" ? `Ver detalhes do ${phone.model}` : `View details for ${phone.model}`} key={phone.slug}><div className="referenceProductImage"><span>{phone.condition === "Novo" ? (lang === "pt" ? "NOVO" : "NEW") : (lang === "pt" ? "SEMINOVO" : "PRE-OWNED")}</span><img src={phone.image} alt={phone.model}/></div><div><small>{phone.brand}</small><h3>{phone.model}</h3><p>{phone.storage}</p><b>{lang === "pt" ? phone.price : "Ask for price"}</b><span className="referenceProductDetails"><T pt="Ver detalhes" en="View details" /> →</span></div></Link>)}</div></section>
 
-      <section className="referenceProducts"><header><div><small><T pt="TELEFONES EM DESTAQUE" en="FEATURED PHONES" /></small><h2><T pt="Modelos apresentados pela MM." en="Models presented by MM." /></h2></div><Link href="/telefones"><T pt="Ver todos os telefones" en="View all phones" /> →</Link></header><div>{featured.map((phone) => <article key={phone.slug}><Link href={`/telefones/${phone.slug}`} className="referenceProductImage"><span>{phone.condition === "Novo" ? (lang === "pt" ? "NOVO" : "NEW") : (lang === "pt" ? "SEMINOVO" : "PRE-OWNED")}</span><img src={phone.image} alt={phone.model}/></Link><div><small>{phone.brand}</small><h3>{phone.model}</h3><p>{phone.storage}</p><b>{lang === "pt" ? phone.price : "Ask for price"}</b><Link href={`/telefones/${phone.slug}`}><T pt="Ver detalhes" en="View details" /> →</Link></div></article>)}</div></section>
-
-      <section className="referenceRepair"><div><small><T pt="CUIDADO TÉCNICO" en="TECHNICAL CARE" /></small><h2><T pt={<>Um problema no telefone<br/><em>não precisa parar o seu dia.</em></>} en={<>A phone problem<br/><em>does not have to stop your day.</em></>} /></h2><p><T pt="Conte-nos o que aconteceu e ajudamos a identificar o próximo passo." en="Tell us what happened and we will help identify the next step." /></p><Link href="/reparacao"><T pt="Quero reparar o meu telefone" en="I want to repair my phone" /> →</Link></div><div className="referenceIssues">{issues.map(([Icon, pt, en]) => <Link key={pt as string} href={`/reparacao?problema=${encodeURIComponent(pt as string)}`}><i><Icon size={15}/></i><span>{lang === "pt" ? pt : en}</span></Link>)}</div></section>
+      <section className="referenceRepair"><div><small><T pt="CUIDADO TÉCNICO" en="TECHNICAL CARE" /></small><h2><T pt={<>O seu telefone está com problemas?<br/><em>Nós ajudamos a encontrar a solução.</em></>} en={<>Is your phone having problems?<br/><em>We help you find the solution.</em></>} /></h2><p><T pt="Ecrã, bateria, carregamento, software ou outro problema? Conte-nos o que aconteceu." en="Screen, battery, charging, software or another problem? Tell us what happened." /></p><Link href="/reparacao"><T pt="Quero reparar o meu telefone" en="I want to repair my phone" /> →</Link></div><div className="referenceIssues">{issues.map(([Icon, pt, en]) => <Link key={pt as string} href={`/reparacao?problema=${encodeURIComponent(pt as string)}`}><i><Icon size={18} strokeWidth={2.25}/></i><span>{lang === "pt" ? pt : en}</span></Link>)}</div></section>
 
       <section className="referenceTrust">{trust.map(([Icon, ptTitle, ptText, enTitle, enText]) => <article key={ptTitle as string}><i><Icon size={18}/></i><div><b>{lang === "pt" ? ptTitle : enTitle}</b><p>{lang === "pt" ? ptText : enText}</p></div></article>)}</section>
     </div>

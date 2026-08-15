@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/.pnpm-store/
 /.pnp
 .pnp.*
 .yarn/*
@@ -21,15 +22,32 @@
 # misc
 .DS_Store
 *.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.mobileprovision
+/.cache/
+/.turbo/
+
+# Accidental byte-identical image duplicates; canonical .png files stay tracked.
+/public/phones/galaxy-s26-ultra.png.png
+/public/phones/iphone-17-pro-max.png.png
+/public/phones/tecno-camon-50-ultra.png.png
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+.codex-dev-*.log
+*.tmp
+*.temp
 
-# env files (can opt-in for committing if needed)
+# Environment files and local secrets. Keep only the empty template.
 .env*
+!.env.example
 
 # vercel
 .vercel

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MapPin, Menu, MessageCircle, Search, X } from "lucide-react";
+import { MapPin, Menu, MessageCircle, X } from "lucide-react";
 import { LanguageProvider, T, useLanguage } from "./LanguageProvider";
 import { whatsappUrl } from "../lib/phones";
 
@@ -25,15 +25,14 @@ function Header() {
 
   return <header className="siteHeader exactHeader">
     <div className="shopTop"><div className="wide">
-      <Link href="/contacto"><MapPin size={13}/><T pt="Bela Vista, em frente à Pumangol, Angola" en="Bela Vista, opposite Pumangol, Angola" /></Link>
-      <div><a href="tel:+244923933692"><MessageCircle size={13}/> +244 923 933 692</a><span className="topDivider"/><button onClick={() => setLang("pt")} className={lang === "pt" ? "active" : ""}>PT</button><span>|</span><button onClick={() => setLang("en")} className={lang === "en" ? "active" : ""}>EN</button></div>
+      <Link href="/contacto"><MapPin size={13}/><T pt="Bela Vista, frente às bombas da Pumangol" en="Bela Vista, opposite the Pumangol fuel station" /></Link>
+      <div><button onClick={() => setLang("pt")} className={lang === "pt" ? "active" : ""}>PT</button><span>|</span><button onClick={() => setLang("en")} className={lang === "en" ? "active" : ""}>EN</button></div>
     </div></div>
     <div className="wide headerInner">
       <Link className="brand" href="/" aria-label="MM início"><span className="logoFrame"><img src="/logo-mm.png" alt="" /></span><span className="brandName"><b>MM</b><small><T pt="VENDA E REPARAÇÃO DE TELEFONES" en="PHONE SALES AND REPAIR" /></small></span></Link>
       <button className="menuButton" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={lang === "pt" ? "Abrir menu" : "Open menu"}>{open ? <X size={24}/> : <Menu size={24}/>}</button>
       <div className={`navPanel ${open ? "open" : ""}`}>
         <nav>{nav.map((item) => <Link className={pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href)) ? "active" : ""} key={item.href} href={item.href} onClick={() => setOpen(false)}>{lang === "pt" ? item.pt : item.en}</Link>)}</nav>
-        <Link className="searchHint" href="/telefones" aria-label={lang === "pt" ? "Pesquisar telefones" : "Search phones"}><Search size={18}/></Link>
         <a className="headerCta" href={whatsappUrl(lang === "pt" ? generalPt : generalEn)}><MessageCircle size={16}/><T pt="Falar no WhatsApp" en="Chat on WhatsApp" /><span>→</span></a>
       </div>
     </div>
@@ -41,7 +40,9 @@ function Header() {
 }
 
 function Footer() {
-  return <footer className="siteFooter"><div className="wide footerGrid"><div><Link className="brand" href="/"><span className="logoFrame"><img src="/logo-mm.png" alt="" /></span><span className="brandName"><b>MM</b><small><T pt="Venda e Reparação de Telefones" en="Phone Sales and Repair" /></small></span></Link><p><T pt="Tecnologia, confiança e cuidado mais perto de si." en="Technology, trust and care closer to you." /></p></div><div><b><T pt="Navegação" en="Navigation" /></b><Link href="/"><T pt="Início" en="Home" /></Link><Link href="/telefones"><T pt="Telefones" en="Phones" /></Link><Link href="/reparacao"><T pt="Reparação" en="Repair" /></Link><Link href="/peliculas"><T pt="Películas" en="Screen protection" /></Link><Link href="/sobre"><T pt="Sobre" en="About" /></Link><Link href="/contacto"><T pt="Contacto" en="Contact" /></Link></div><div><b><T pt="Fale com a MM" en="Talk to MM" /></b><a href={whatsappUrl(generalPt)}>WhatsApp · +244 923 933 692</a><a href="https://www.google.com/maps/search/?api=1&query=Pumangol+Bela+Vista+Angola" target="_blank" rel="noreferrer"><T pt="Abrir localização" en="Open location" /></a><span>Bela Vista, <T pt="em frente à Pumangol" en="opposite Pumangol" /></span><span>Angola</span></div></div><div className="wide footerBottom"><span>© 2026 MM</span><span><T pt="Responsável: Quintino Manuel" en="Manager: Quintino Manuel" /></span></div></footer>;
+  const { lang } = useLanguage();
+  const backToTop = () => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  return <footer className="siteFooter"><div className="wide footerGrid"><div><button className="brand footerBackToTop" type="button" onClick={backToTop} aria-label={lang === "pt" ? "Voltar ao topo da página" : "Back to the top of the page"} title={lang === "pt" ? "Voltar ao topo" : "Back to top"}><span className="logoFrame"><img src="/logo-mm.png" alt="" /></span><span className="brandName"><b>MM</b><small><T pt="Venda e Reparação de Telefones" en="Phone Sales and Repair" /></small></span></button><p><T pt="Tecnologia, confiança e cuidado mais perto de si." en="Technology, trust and care closer to you." /></p></div><div><b><T pt="Navegação" en="Navigation" /></b><Link href="/"><T pt="Início" en="Home" /></Link><Link href="/telefones"><T pt="Telefones" en="Phones" /></Link><Link href="/reparacao"><T pt="Reparação" en="Repair" /></Link><Link href="/peliculas"><T pt="Películas" en="Screen protection" /></Link><Link href="/sobre"><T pt="Sobre" en="About" /></Link><Link href="/contacto"><T pt="Contacto" en="Contact" /></Link></div><div><b><T pt="Fale com a MM" en="Talk to MM" /></b><a href={whatsappUrl(generalPt)}>WhatsApp · +244 923 933 692</a><a href="https://www.google.com/maps/search/?api=1&query=Pumangol+Bela+Vista+Angola" target="_blank" rel="noreferrer"><T pt="Abrir localização" en="Open location" /></a><span><T pt="Bela Vista, frente às bombas da Pumangol" en="Bela Vista, opposite the Pumangol fuel station" /></span></div></div><div className="wide footerBottom"><span>© 2026 MM</span></div></footer>;
 }
 
 function ScrollToTop() { const pathname = usePathname(); useEffect(() => { window.scrollTo(0, 0); }, [pathname]); return null; }

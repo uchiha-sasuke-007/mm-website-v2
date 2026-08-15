@@ -9,7 +9,7 @@ const mono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://mm-mobile.pages.dev"),
   title: "MM | Venda e Reparação de Telefones em Angola",
-  description: "Venda e reparação de telefones com atendimento próximo em Bela Vista, Angola.",
+  description: "Venda e reparação de telefones com atendimento próximo na Bela Vista, frente às bombas da Pumangol.",
   icons: { icon: "/logo-mm.png", shortcut: "/logo-mm.png", apple: "/logo-mm.png" },
   openGraph: {
     title: "MM | Venda e Reparação de Telefones",
