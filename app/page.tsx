@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/InternalLink";
 import { BatteryCharging, Camera, CircleEllipsis, Gauge, MessageCircle, MessagesSquare, Power, Search, ShieldCheck, Smartphone, Zap } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { T, useLanguage } from "../components/LanguageProvider";

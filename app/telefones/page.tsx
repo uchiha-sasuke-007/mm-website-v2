@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/InternalLink";
 import { ChevronRight, Mail, MessageCircle, Search } from "lucide-react";
 import { phones, whatsappUrl } from "../../lib/phones";
 import { T, useLanguage } from "../../components/LanguageProvider";

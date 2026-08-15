@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/InternalLink";
 import { usePathname } from "next/navigation";
 import { MapPin, Menu, MessageCircle, X } from "lucide-react";
 import { LanguageProvider, T, useLanguage } from "./LanguageProvider";

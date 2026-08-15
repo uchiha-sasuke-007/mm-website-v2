@@ -1,8 +1,7 @@
 ﻿"use client";
 
 import { FormEvent, useEffect, useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from "@/components/InternalLink";
 import { ArrowLeft, Mail, MessageCircle, X } from "lucide-react";
 import { T, useLanguage } from "../../../components/LanguageProvider";
 import type { Phone } from "../../../lib/phones";
@@ -11,7 +10,6 @@ import { whatsappUrl } from "../../../lib/phones";
 type EmailForm = { name:string; company:string; email:string; phone:string; quantity:string; message:string };
 
 export default function ProductDetail({ phone }: { phone: Phone }) {
-  const router = useRouter();
   const { lang } = useLanguage();
   const [storage, setStorage] = useState("");
   const [color, setColor] = useState("");
@@ -32,8 +30,8 @@ export default function ProductDetail({ phone }: { phone: Phone }) {
   function openEmail(){if(!ready)return;setStatus("idle");setEmailOpen(true)}
   function goBack(){
     const previous = document.referrer;
-    if(previous && new URL(previous).origin === window.location.origin) router.back();
-    else router.push("/telefones");
+    if(previous && new URL(previous).origin === window.location.origin) window.history.back();
+    else window.location.assign("/telefones");
   }
   function field(key:keyof EmailForm){return(event:React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>)=>setForm(current=>({...current,[key]:event.target.value}))}
   async function submit(event:FormEvent){event.preventDefault();setStatus("sending");try{const response=await fetch("/api/commercial-request",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({...form,quantity,brand:phone.brand,model:phone.model,condition:phone.condition,storage,color,lang})});if(!response.ok)throw new Error("send failed");setStatus("success")}catch{setStatus("error")}}

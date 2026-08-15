@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/InternalLink";
 import { ArrowRight, ExternalLink, Mail, MapPin, MessageCircle, Phone, ShieldCheck, Smartphone, Wrench } from "lucide-react";
 import { T, useLanguage } from "../../components/LanguageProvider";
 import { whatsappUrl } from "../../lib/phones";
