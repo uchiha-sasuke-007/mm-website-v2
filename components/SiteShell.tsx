@@ -29,7 +29,7 @@ function Header() {
       <div><button onClick={() => setLang("pt")} className={lang === "pt" ? "active" : ""}>PT</button><span>|</span><button onClick={() => setLang("en")} className={lang === "en" ? "active" : ""}>EN</button></div>
     </div></div>
     <div className="wide headerInner">
-      <Link className="brand" href="/" aria-label="MM início"><span className="logoFrame"><img src="/logo-mm.png" alt="" /></span><span className="brandName"><b>MM</b><small><T pt="VENDA E REPARAÇÃO DE TELEFONES" en="PHONE SALES AND REPAIR" /></small></span></Link>
+      <Link className="brand" href="/" aria-label="MM início"><span className="logoFrame"><img src="/logo-mm.png" alt="" /></span><span className="brandName"><b>MM</b><small><T pt="VENDA, REPARAÇÃO DE TELEFONES E PRESTAÇÃO DE SERVIÇOS" en="PHONE SALES AND REPAIR" /></small></span></Link>
       <button className="menuButton" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={lang === "pt" ? "Abrir menu" : "Open menu"}>{open ? <X size={24}/> : <Menu size={24}/>}</button>
       <div className={`navPanel ${open ? "open" : ""}`}>
         <nav>{nav.map((item) => <Link className={pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href)) ? "active" : ""} key={item.href} href={item.href} onClick={() => setOpen(false)}>{lang === "pt" ? item.pt : item.en}</Link>)}</nav>
