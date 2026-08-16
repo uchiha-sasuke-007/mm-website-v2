@@ -6,7 +6,7 @@ import { T, useLanguage } from "../../components/LanguageProvider";
 import { whatsappUrl } from "../../lib/phones";
 
 const EMAIL = "comercialmm09@gmail.com";
-const MAP_URL = "https://www.google.com/maps/search/?api=1&query=Pumangol+Bela+Vista+Angola";
+const MAP_URL = "https://www.google.com/maps/search/?api=1&query=Estrada+100+Sonangol+Angola";
 
 const journeys = [
   { icon: Smartphone, href: "/telefones", pt: ["Quero comprar um telefone", "Conheça os telefones disponíveis e encontre uma opção adequada às suas necessidades.", "Ver telefones"], en: ["I want to buy a phone", "Explore the available phones and find an option suited to your needs.", "View phones"] },
@@ -30,7 +30,7 @@ export default function ContactPage() {
           <p><T pt="Fale com a equipa da MM para consultar telefones disponíveis, solicitar assistência técnica ou verificar películas laser para o seu modelo." en="Talk to the MM team to check available phones, request technical assistance or find laser screen protectors for your model." /></p>
           <div className="contactValueLine"><span><T pt="Venda" en="Sales" /></span><i /><span><T pt="Reparação" en="Repair" /></span><i /><span><T pt="Proteção" en="Protection" /></span></div>
         </div>
-        <div className="contactHeroVisual" aria-hidden="true"><div className="contactSignal"><div className="contactSignalOrbit contactSignalOrbitInner"><span /></div><div className="contactSignalOrbit contactSignalOrbitMiddle"><span /></div><div className="contactSignalOrbit contactSignalOrbitOuter"><span /></div><MessageCircle /></div><div className="contactHeroTag"><MapPin /><strong>Bela Vista</strong><small><T pt="Frente às bombas da Pumangol" en="Opposite the Pumangol fuel station" /></small></div></div>
+        <div className="contactHeroVisual" aria-hidden="true"><div className="contactSignal"><div className="contactSignalOrbit contactSignalOrbitInner"><span /></div><div className="contactSignalOrbit contactSignalOrbitMiddle"><span /></div><div className="contactSignalOrbit contactSignalOrbitOuter"><span /></div><MessageCircle /></div><div className="contactHeroTag"><MapPin /><strong>Estrada nº 100</strong><small><T pt="Em frente às bombas da Sonangol" en="Opposite the Sonangol fuel station" /></small></div></div>
       </div>
     </section>
 
@@ -54,8 +54,8 @@ export default function ContactPage() {
 
     <section className="contactLocation">
       <div className="wide contactLocationGrid">
-        <div className="contactLocationCopy"><span className="kicker"><i /><T pt="ONDE ESTAMOS" en="WHERE WE ARE" /></span><h2><T pt="Encontro a MM na Bela Vista." en="Find MM in Bela Vista." /></h2><p><T pt="Estamos na Bela Vista, frente às bombas da Pumangol." en="We are in Bela Vista, opposite the Pumangol fuel station." /></p><a className="contactSecondaryAction" href={MAP_URL} target="_blank" rel="noreferrer"><MapPin /><T pt="Abrir no Google Maps" en="Open in Google Maps" /><ExternalLink /></a></div>
-        <a className="contactMapPanel" href={MAP_URL} target="_blank" rel="noreferrer" aria-label={lang === "pt" ? "Abrir localização da MM no Google Maps" : "Open MM location in Google Maps"}><div className="contactMapGrid" /><div className="contactMapRings"><MapPin /></div><img src="/logo-mm.png" alt="" /><strong>MM · BELA VISTA</strong><span><T pt="Frente às bombas da Pumangol" en="Opposite the Pumangol fuel station" /></span><b><T pt="Abrir localização" en="Open location" /> <ExternalLink /></b></a>
+        <div className="contactLocationCopy"><span className="kicker"><i /><T pt="ONDE ESTAMOS" en="WHERE WE ARE" /></span><h2><T pt="Encontre a MM na Estrada nº 100." en="Find MM on Road No. 100." /></h2><p><T pt="Estamos localizados na Estrada nº 100, em frente às bombas da Sonangol." en="We are located on Road No. 100, opposite the Sonangol fuel station." /></p><a className="contactSecondaryAction" href={MAP_URL} target="_blank" rel="noreferrer"><MapPin /><T pt="Abrir no Google Maps" en="Open in Google Maps" /><ExternalLink /></a></div>
+        <a className="contactMapPanel" href={MAP_URL} target="_blank" rel="noreferrer" aria-label={lang === "pt" ? "Abrir localização da MM no Google Maps" : "Open MM location in Google Maps"}><div className="contactMapGrid" /><div className="contactMapRings"><MapPin /></div><img src="/logo-mm.png" alt="" /><strong>MM · ESTRADA Nº 100</strong><span><T pt="Em frente às bombas da Sonangol" en="Opposite the Sonangol fuel station" /></span><b><T pt="Abrir localização" en="Open location" /> <ExternalLink /></b></a>
       </div>
     </section>
 

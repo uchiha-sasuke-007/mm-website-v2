@@ -38,7 +38,7 @@ export default function Home() {
         <span className="referenceBadge"><T pt="TECNOLOGIA, CONFIANÇA E QUALIDADE" en="TECHNOLOGY, TRUST AND QUALITY" /></span>
         <h1><T pt={<><span>Encontre o telefone<br/>certo para si.</span><em>E conte connosco para cuidar dele.</em></>} en={<><span>Find the right phone<br/>for you.</span><em>And count on us to take care of it.</em></>} /></h1>
         <p className="heroSubtitle"><T pt="Venda, reparação e proteção de telefones num só lugar." en="Phone sales, repair and protection in one place." /></p>
-        <p className="heroDescription"><T pt="Telefones selecionados, assistência especializada e proteção para o seu aparelho — estamos localizados na Bela Vista, frente às bombas da Pumangol." en="Selected phones, specialist assistance and protection for your device — we are located in Bela Vista, opposite the Pumangol fuel station." /></p>
+        <p className="heroDescription"><T pt="Telefones selecionados, assistência especializada e proteção para o seu aparelho — Estamos localizados na Estrada nº 100, em frente às bombas da Sonangol." en="Selected phones, specialist assistance and protection for your device — we are located on Road No. 100, opposite the Sonangol fuel station." /></p>
         <div className="referenceActions"><Link href="/telefones"><T pt="Ver telefones" en="View phones" /> →</Link><Link href="/reparacao"><T pt="Reparar o meu telefone" en="Repair my phone" /> →</Link></div>
       </div>
 
